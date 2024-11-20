@@ -203,7 +203,7 @@ function runtests(; order = 2, kwargs...) #hide
 	## first assembly causes allocations when filling sparse matrix
 	loop_allocations = assemble!(A.entries, b.entries, FES, f, μ)
 	@info "allocations in 1st assembly: $loop_allocations"
-	## second assebly in same matrix should have allocation-free inner loop
+	## second assembly in same matrix should have allocation-free inner loop
 	loop_allocations = assemble!(A.entries, b.entries, FES, f, μ)
 	@info "allocations in 2nd assembly: $loop_allocations"
 	@test loop_allocations == 0
